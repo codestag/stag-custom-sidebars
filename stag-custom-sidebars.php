@@ -260,7 +260,7 @@ class Stag_Custom_Sidebars {
 			$output = ob_get_clean();
 		}
 
-		if( $output ) $output = "<div class='stag-custom-widget-area {$class}'>{$output}</div>";
+		if( $output ) $output = "<div id='sidebar-{$id}' class='stag-custom-widget-area {$class}'>{$output}</div>";
 
 		return $output;
 	}
