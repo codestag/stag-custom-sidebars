@@ -22,6 +22,7 @@ class StagCustomSidebars
 			id = where_to_add.attr('id').replace('sidebar-', '')
 			where_to_add.prepend("<div class='sidebar-description'><p class='description'>#{objectL10n.shortcode}: <code>[stag_sidebar id='#{id}']</code></p></div>");
 			return
+		return
 
 	events: ->
 		@widget_wrap.on('click', '.scs-area-delete', $.proxy( this.delete_sidebar, this) )
