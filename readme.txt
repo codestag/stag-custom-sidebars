@@ -2,7 +2,7 @@
 Contributors: mauryaratan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ratan.maurya@gmail.com&item_name=Donation+for+Stag+Custom+Sidebars
 Tags: sidebars, custom-sidebars, mauryaratan, codestag, shortcodes, widgets
-Requires at least: 3.3
+Requires at least: 3.3 or higher
 Stable tag: 1.0
 Tested up to: 3.6.1
 License: GPLv2 or later
