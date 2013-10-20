@@ -233,8 +233,12 @@ class Stag_Custom_Sidebars {
 
 		if( is_array( $this->sidebars ) ) {
 			foreach( $this->sidebars as $sidebar ) {
-				$args['name'] = $sidebar;
-				$args['class'] = 'stag-custom';
+				$args = array(
+					'name'  => $sidebar,
+					'class' => 'stag-custom',
+					'id'    => sanitize_html_class( sanitize_title_with_dashes( $sidebar ) )
+				);
+				
 				register_sidebar($args);
 			}
 		}
@@ -254,13 +258,13 @@ class Stag_Custom_Sidebars {
 
 		$output = '';
 
-		if( is_active_sidebar( 'sidebar-' . $id ) ) {
+		if( is_active_sidebar( $id ) ) {
 			ob_start();
 
 			do_action( 'stag_custom_sidebars_before_output', $id );
 
-			echo "<div id='sidebar-{$id}' class='stag-custom-widget-area {$class}'>";
-			dynamic_sidebar( 'sidebar-' . $id );
+			echo "<div id='{$id}' class='stag-custom-widget-area {$class}'>";
+			dynamic_sidebar( $id );
 			echo "</div>";
 			
 			do_action( 'stag_custom_sidebars_after_output' );
