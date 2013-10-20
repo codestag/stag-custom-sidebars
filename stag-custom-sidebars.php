@@ -261,13 +261,13 @@ class Stag_Custom_Sidebars {
 		if( is_active_sidebar( $id ) ) {
 			ob_start();
 
-			do_action( 'stag_custom_sidebars_before_output', $id );
+			do_action( 'stag_custom_sidebars_before', $id );
 
 			echo "<div id='{$id}' class='stag-custom-widget-area {$class}'>";
 			dynamic_sidebar( $id );
 			echo "</div>";
 			
-			do_action( 'stag_custom_sidebars_after_output' );
+			do_action( 'stag_custom_sidebars_after' );
 			
 			$output = ob_get_clean();
 		}
