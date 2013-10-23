@@ -1,6 +1,6 @@
 === Stag Custom Sidebars ===
 Contributors: mauryaratan
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ratan.maurya@gmail.com&item_name=Donation+for+Stag+Custom+Sidebars
+Donate link: http://codest.ag/scs-donate
 Tags: sidebars, custom-sidebars, mauryaratan, codestag, shortcodes, widgets
 Requires at least: 3.3 or higher
 Stable tag: 1.0
