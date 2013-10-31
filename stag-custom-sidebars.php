@@ -224,8 +224,8 @@ class Stag_Custom_Sidebars {
 		if( empty( $this->sidebars ) ) $this->sidebars = get_option($this->stored);
 
 		$args = apply_filters( 'stag_custom_sidebars_widget_args', array(
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>',
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</aside>',
 				'before_title'  => '<h3 class="widgettitle">', 
 				'after_title'   => '</h3>'
 			)
@@ -261,9 +261,9 @@ class Stag_Custom_Sidebars {
 
 			do_action( 'stag_custom_sidebars_before', $id );
 
-			echo "<div id='{$id}' class='stag-custom-widget-area {$class}'>";
+			echo "<section id='{$id}' class='stag-custom-widget-area {$class}'>";
 			dynamic_sidebar( $id );
-			echo "</div>";
+			echo "</section>";
 			
 			do_action( 'stag_custom_sidebars_after' );
 			
