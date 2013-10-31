@@ -233,11 +233,9 @@ class Stag_Custom_Sidebars {
 
 		if( is_array( $this->sidebars ) ) {
 			foreach( $this->sidebars as $sidebar ) {
-				$args = array(
-					'name'  => $sidebar,
-					'class' => 'stag-custom',
-					'id'    => sanitize_html_class( sanitize_title_with_dashes( $sidebar ) )
-				);
+				$args['name']  = $sidebar;
+				$args['class'] = 'stag-custom';
+				$args['id']    = sanitize_html_class( sanitize_title_with_dashes( $sidebar ) );
 				
 				register_sidebar($args);
 			}
