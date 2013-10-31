@@ -2,9 +2,9 @@
 Contributors: mauryaratan
 Donate link: http://codest.ag/scs-donate
 Tags: sidebars, custom-sidebars, mauryaratan, codestag, shortcodes, widgets
-Requires at least: 3.3 or higher
-Stable tag: 1.0
-Tested up to: 3.6.1
+Requires at least: 3.3
+Stable tag: 1.0.1
+Tested up to: 3.8-alpha
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,7 +56,11 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 
 == Changelog ==
 
-= 1.0 =
-Initial version.
+= 1.0.1 - October 31, 2013 =
+* Fix: Issue with register_sidebar arguments being overridden
+* Fix: Changed opening/closing tags for sidebar wrapper and sidebar widgets
+
+= 1.0 - October 23, 2013 =
+* Initial version.
 
 == Upgrade Notice ==
