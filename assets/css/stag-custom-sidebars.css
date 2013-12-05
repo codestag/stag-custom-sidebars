@@ -33,16 +33,31 @@
 	position: relative;
 }
 
+.sidebar-stag-custom .description{
+	-webkit-user-select: initial;
+	-moz-user-select: initial;
+	-ms-user-select: initial;
+	user-select: initial;
+}
+
 .scs-area-delete{
 	position: absolute;
 	cursor: pointer;
 	width: 15px;
 	height: 15px;
 	z-index: 50;
-	right: 30px;
-	top: 10px;
+	right: 40px;
+	top: 13px;
 	font-size: 1.5em;
 	color: #cecece;
+}
+
+.branch-3-7 .scs-area-delete,
+.branch-3-6 .scs-area-delete,
+.branch-3-5 .scs-area-delete,
+.branch-3-4 .scs-area-delete {
+	right: 30px;
+	top: 10px;
 }
 
 .rtl .scs-area-delete{

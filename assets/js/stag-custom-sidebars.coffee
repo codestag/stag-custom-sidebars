@@ -20,7 +20,7 @@ class StagCustomSidebars
 		@widget_area.find('.sidebar-stag-custom').each ->
 			where_to_add = $(this).find('.widgets-sortables')
 			id = where_to_add.attr('id').replace('sidebar-', '')
-			where_to_add.prepend("<div class='sidebar-description'><p class='description'>#{objectL10n.shortcode}: <code>[stag_sidebar id='#{id}']</code></p></div>");
+			where_to_add.append("<div class='sidebar-description'><p class='description'>#{objectL10n.shortcode}: <code>[stag_sidebar id='#{id}']</code></p></div>");
 			return
 		return
 
