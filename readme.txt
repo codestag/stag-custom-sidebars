@@ -3,8 +3,8 @@ Contributors: mauryaratan
 Donate link: http://codest.ag/scs-donate
 Tags: sidebars, custom-sidebars, mauryaratan, codestag, shortcodes, widgets
 Requires at least: 3.3
-Stable tag: 1.0.1
-Tested up to: 3.8-alpha
+Stable tag: 1.0.2
+Tested up to: 3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,11 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 2. As usual, new widget area appears to right of the screen along with a button to delete the widget area with a shortcode in description to use it anywhere.
 
 == Changelog ==
+
+= 1.0.2 - December 13, 2013 =
+* Fix: Few UI issues with WordPress 3.8
+* Improved: Compatibilty with WordPress 3.8
+* Provide fallback for older version of WordPress installations
 
 = 1.0.1 - October 31, 2013 =
 * Fix: Issue with register_sidebar arguments being overridden
