@@ -104,6 +104,8 @@ class Stag_Custom_Sidebars {
 	 */
 	public function load_scripts_styles() {
 
+		global $wp_version;
+
 		add_action( 'load-widgets.php', array( $this, 'add_sidebar_area'), 100 );
 
 		wp_enqueue_script( 'jquery' );
@@ -113,7 +115,11 @@ class Stag_Custom_Sidebars {
 			'shortcode' => __( 'Shortcode', 'stag' )
 		) );
 
-		wp_enqueue_style( 'stag-custom-sidebars', $this->plugin_url() .  '/assets/css/stag-custom-sidebars.css', '', $this->version, 'screen' );
+		if ( true === version_compare( $wp_version, '3.7.9', '>' ) ) {
+			wp_enqueue_style( 'stag-custom-sidebars-wp38plus', $this->plugin_url() .  '/assets/css/stag-custom-sidebars-wp38plus.css', '', $this->version, 'screen' );
+		} else {
+			wp_enqueue_style( 'stag-custom-sidebars', $this->plugin_url() .  '/assets/css/stag-custom-sidebars.css', '', $this->version, 'screen' );
+		}
 	}
 
 	/**
@@ -122,14 +128,22 @@ class Stag_Custom_Sidebars {
 	 * @return Output custom widget area field
 	 */
 	public function template_custom_widget_area() {
+		global $wp_version;
 		?>
 		<script type="text/html" id="tmpl-stag-add-widget">
 			<div class="stag-widgets-holder-wrap">
+				<?php if ( false === version_compare( $wp_version, '3.7.9', '>' ) ) : ?>
 				<div class="sidebar-name">
 					<h3><?php echo $this->title ?></h3>
 				</div>
+				<?php endif; ?>
 
 				<form class="stag-add-widget" method="post">
+					<?php if ( true === version_compare( $wp_version, '3.7.9', '>' ) ) : ?>
+					<div class="sidebar-name">
+						<h3><?php echo $this->title ?></h3>
+					</div>
+					<?php endif; ?>
 					<input type="text" name="stag-add-widget" value="" placeholder="<?php _e( 'Enter name of the new widget area here', 'stag' ); ?>" required />
 					<?php submit_button( __( 'Add Widget Area', 'stag' ), 'secondary large', $name = 'stag-custom-sidebar-submit' ); ?>
 					<input type='hidden' name='scs-delete-nonce' value="<?php echo wp_create_nonce( 'scs-delete-nonce' ) ?>">
