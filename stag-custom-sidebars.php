@@ -67,13 +67,13 @@ class Stag_Custom_Sidebars {
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 		
-		add_action( 'admin_footer', array( $this, 'template_custom_widget_area' ), 200 );
-		add_action( 'load-widgets.php', array( $this, 'load_scripts_styles' ) , 5 );
+		add_action( 'admin_footer', array( &$this, 'template_custom_widget_area' ), 200 );
+		add_action( 'load-widgets.php', array( &$this, 'load_scripts_styles' ) , 5 );
 
-		add_action( 'widgets_init', array( $this, 'register_custom_sidebars') );
-		add_action( 'wp_ajax_stag_ajax_delete_custom_sidebar', array( $this, 'delete_sidebar_area' ) , 1000 );
+		add_action( 'widgets_init', array( &$this, 'register_custom_sidebars'), 1000 );
+		add_action( 'wp_ajax_stag_ajax_delete_custom_sidebar', array( &$this, 'delete_sidebar_area' ) , 1000 );
 
-		add_shortcode( 'stag_sidebar', array( $this, 'stag_sidebar_shortcode' ) );
+		add_shortcode( 'stag_sidebar', array( &$this, 'stag_sidebar_shortcode' ) );
 	}
 
 	/**
@@ -162,7 +162,8 @@ class Stag_Custom_Sidebars {
 		if ( !empty( $_POST['stag-add-widget'] ) ) {
 			$this->sidebars = get_option($this->stored);
 			$name           = $this->get_name( $_POST['stag-add-widget'] );
-			$this->sidebars = array_merge( $this->sidebars, array($name) );
+
+			$this->sidebars[sanitize_title_with_dashes($name)] = $name;
 
 			update_option( $this->stored, $this->sidebars );
 			wp_redirect( admin_url('widgets.php') );
@@ -179,12 +180,13 @@ class Stag_Custom_Sidebars {
 		check_ajax_referer('scs-delete-nonce');
 
 		if ( ! empty( $_POST['name'] ) ) {
-			$name           = stripslashes($_POST['name']);
+			$name           = sanitize_title_with_dashes(stripslashes($_POST['name']));
 			$this->sidebars = get_option($this->stored);
 
-			if ( ($key = array_search( $name, $this->sidebars ) ) !== false) {
-				unset( $this->sidebars[$key] );
+			if ( array_key_exists( $name, $this->sidebars ) ) {
+				unset( $this->sidebars[$name] );
 				update_option( $this->stored, $this->sidebars );
+				unregister_sidebar( $name );
 				echo "sidebar-deleted";
 			}
 		}
@@ -197,34 +199,34 @@ class Stag_Custom_Sidebars {
 	 * @param string $name User entered name
 	 * @return string Processed name
 	 */
-	public function get_name( $name ) {
-        if( empty( $GLOBALS['wp_registered_sidebars'] ) )
+	public function get_name($name) {
+        if ( empty( $GLOBALS['wp_registered_sidebars'] ) ) {
         	return $name;
-
-        $taken = array();
+        }
+	
+	    $taken = array();
 
         foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) {
-        	$taken[] = $sidebar['name'];
-        }
-
-        if ( empty($this->sidebars) ) $this->sidebars = array();
-
-        $taken = array_merge( $taken, $this->sidebars );
-
-        if ( in_array($name, $taken) ) {
-        	$counter  = substr($name, -1);  
-			$new_name = "";
-
-			if ( ! is_numeric($counter) ) {
-				$new_name = $name . " 1";
-			} else {
-				$new_name = substr($name, 0, -1) . ((int) $counter + 1);
-			}
-
-			$name = $this->get_name($new_name);
-        }
-
-        return $name;
+            $taken[] = $sidebar['name'];
+	    }
+	    
+        if( empty($this->sidebars) ) $this->sidebars = array();
+	    $taken = array_merge($taken, $this->sidebars);
+	    
+	    if ( in_array( $name, $taken ) ) {
+             $counter  = substr($name, -1);  
+             $new_name = "";
+                
+            if ( ! is_numeric($counter) ) {
+                $new_name = $name . " 1";
+            } else {
+                $new_name = substr($name, 0, -1) . ((int) $counter + 1);
+            }
+            
+            $name = $this->get_name($new_name);
+	    }
+	    
+	    return $name;
 	}
 
 	/**
@@ -247,6 +249,7 @@ class Stag_Custom_Sidebars {
 
 		if( is_array( $this->sidebars ) ) {
 			foreach( $this->sidebars as $sidebar ) {
+				$args['id']    = sanitize_title_with_dashes( $sidebar );
 				$args['name']  = $sidebar;
 				$args['class'] = 'stag-custom';
 				register_sidebar($args);
@@ -267,8 +270,6 @@ class Stag_Custom_Sidebars {
 		), $atts ) );
 
 		$output = '';
-
-		$id = 'sidebar-'.$id;
 
 		if( is_active_sidebar( $id ) ) {
 			ob_start();

@@ -56,10 +56,6 @@ class StagCustomSidebars
 						$('.widget-control-remove', widget).trigger 'click'
 						widget.remove()
 
-						obj.widget_area.find('.widgets-holder-wrap .widgets-sortables') .each (i) ->
-							$(this).attr id: "sidebar-#{i+1}"
-							return
-
 						wpWidgets.saveOrder()
 						return
 
