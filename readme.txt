@@ -3,7 +3,7 @@ Contributors: mauryaratan
 Donate link: http://codest.ag/scs-donate
 Tags: sidebars, custom-sidebars, mauryaratan, codestag, shortcodes, widgets
 Requires at least: 3.3
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 Tested up to: 3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,7 +14,7 @@ Create custom dynamic sidebars and use anywhere with shortcodes.
 
 This plugin adds a button to widgets area to create a new sidebar area which you can later use just about anywhere.
 
-To display the sidebar with shortcode you can use ``[stag_sidebar id="1"]`` where ``id`` is the id of the sidebar that appears in the description area of the respective widget area. You can also pass an additional parameter ``class`` in shortcode to add class to the widget area wrapper on frontend.
+To display the sidebar with shortcode you can use ``[stag_sidebar id="custom-sidebar"]`` where ``id`` is the id of the sidebar that appears in the description area of the respective widget area. You can also pass an additional parameter ``class`` in shortcode to add class to the widget area wrapper on frontend.
 
 If you'd like to check out the code and contribute, [join us on GitHub](https://github.com/mauryaratan/stag-custom-sidebars). Pull requests, issues, and plugin recommendations are more than welcome!
 
@@ -56,7 +56,10 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 
 == Changelog ==
 
-= 1.0.3 - December 20, 2013 =
+= 1.0.5 - December 21, 2013 =
+* Bug Fixes
+
+= 1.0.4 - December 20, 2013 =
 * Fixed an issue where deleting a sidebar area caused other sidebar area's widgets to disappear
 
 = 1.0.3 - December 17, 2013 =
