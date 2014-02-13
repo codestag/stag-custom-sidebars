@@ -18,8 +18,8 @@
 
 .stag-widgets-holder-wrap h3 {
 	line-height: 1.3;
-	padding: 0;
-	margin-bottom: 15px;
+	padding: 0 !important;
+	margin-bottom: 15px !important;
 }
 
 .stag-widgets-holder-wrap h3:hover{
