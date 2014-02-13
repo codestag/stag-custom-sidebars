@@ -99,7 +99,7 @@ final class Stag_Custom_Sidebars {
 
 		add_filter( 'wie_unencoded_export_data', array( &$this, 'export_data' ) );
 		add_filter( 'wie_import_results', array( &$this, 'reset_custom_key' ) );
-		add_action( 'wie_before_import', array( &$this, 'before_wie_import' ), 10, 1 );
+		add_action( 'wie_import_data', array( &$this, 'before_wie_import' ) );
 	}
 
 	/**
