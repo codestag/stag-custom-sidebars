@@ -263,7 +263,7 @@ final class Stag_Custom_Sidebars {
 	 */
 	public function register_custom_sidebars() {
 
-		if( empty( $this->sidebars ) ) $this->sidebars = get_option($this->stored);
+		$sidebars = get_option($this->stored);
 
 		$args = apply_filters( 'stag_custom_sidebars_widget_args', array(
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -273,8 +273,8 @@ final class Stag_Custom_Sidebars {
 			)
 		);
 
-		if( is_array( $this->sidebars ) ) {
-			foreach( $this->sidebars as $sidebar ) {
+		if( is_array( $sidebars ) ) {
+			foreach( $sidebars as $sidebar ) {
 				$args['id']    = sanitize_title_with_dashes( $sidebar );
 				$args['name']  = $sidebar;
 				$args['class'] = 'stag-custom';
@@ -368,7 +368,7 @@ final class Stag_Custom_Sidebars {
 		$data = (array) $data;
 
 		$key             = 'stag-custom-sidebars-areas';
-		$sidebars          = get_option('stag_custom_sidebars');
+		$sidebars        = get_option('stag_custom_sidebars');
 		$custom_sidebars = (array) $data[$key];
 
 		unset($data[$key]);
@@ -383,9 +383,7 @@ final class Stag_Custom_Sidebars {
 
 		update_option( 'stag_custom_sidebars', $sidebars );
 
-		// New instance is required in this case
-		$class = new Stag_Custom_Sidebars;
-		$class->register_custom_sidebars();
+		SCS()->register_custom_sidebars();
 
 		return $data;
 	}
