@@ -3,7 +3,7 @@
  * Plugin Name: Stag Custom Sidebars
  * Plugin URI: http://wordpress.org/plugins/stag-custom-sidebars
  * Description: Create custom dynamic sidebars and use anywhere with shortcodes.
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Ram Ratan Maurya
  * Author URI: http://mauryaratan.me
  * Requires at least: 3.3
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @package Stag_Custom_Sidebars
  * @author Ram Ratan Maurya
- * @version 1.0.5
+ * @version 1.0.6
  * @copyright 2013 Ram Ratan Maurya
  */
 final class Stag_Custom_Sidebars {
@@ -35,7 +35,7 @@ final class Stag_Custom_Sidebars {
 	/**
 	 * @var string
 	 */
-	public $version = '1.0.5';
+	public $version = '1.0.6';
 
 	/**
 	 * @var string
@@ -65,7 +65,7 @@ final class Stag_Custom_Sidebars {
 	 *
 	 * @since 1.0.6
 	 * @static
-	 * @see WC()
+	 * @see SCS()
 	 * @return Stag_Custom_Sidebars - Main instance
 	 */
 	public static function instance() {
