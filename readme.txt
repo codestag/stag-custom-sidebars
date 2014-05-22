@@ -3,8 +3,8 @@ Contributors: mauryaratan, codestag
 Donate link: http://codest.ag/scs-donate
 Tags: sidebars, custom-sidebars, mauryaratan, codestag, shortcodes, widgets
 Requires at least: 3.3
-Stable tag: 1.0.6
-Tested up to: 3.9
+Stable tag: 1.0.7
+Tested up to: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ To display the sidebar with shortcode you can use ``[stag_sidebar id="custom-sid
 [vimeo https://vimeo.com/86626101]
 
 = Import/Export =
-We have added compatibility with [Widget Importer & Exporter](http://wordpress.org/plugins/widget-importer-exporter), which gives you the freedom to import and export custom widget areas when moving widgets from one site to another or backing up the widgets.
+We have added compatibility with [Widget Importer & Exporter](https://wordpress.org/plugins/widget-importer-exporter), which gives you the freedom to import and export custom widget areas when moving widgets from one site to another or backing up the widgets.
 
 If you'd like to check out the code and contribute, [join us on GitHub](https://github.com/mauryaratan/stag-custom-sidebars). Pull requests, issues, and plugin recommendations are more than welcome!
 
@@ -62,8 +62,11 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 
 == Changelog ==
 
+= 1.0.7 - May 22, 2014 =
+* Added compatibilty with Widget Customizer
+
 = 1.0.6 - February 18, 2014 =
-* Ability to import/export custom widgets area via [Widget Importer & Exporter](http://wordpress.org/plugins/widget-importer-exporter)
+* Ability to import/export custom widgets area via [Widget Importer & Exporter](https://wordpress.org/plugins/widget-importer-exporter)
 * Performance tweaks
 
 = 1.0.5 - December 21, 2013 =
