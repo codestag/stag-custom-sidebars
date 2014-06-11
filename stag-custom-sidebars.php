@@ -140,7 +140,8 @@ final class Stag_Custom_Sidebars {
 		wp_enqueue_script( 'stag-custom-sidebars', $this->plugin_url() . '/assets/js/stag-custom-sidebars.js', array('jquery'), $this->version, true );
 
 		wp_localize_script( 'stag-custom-sidebars', 'objectL10n', array(
-			'shortcode' => __( 'Shortcode', 'stag' )
+			'shortcode'           => __( 'Shortcode', 'stag' ),
+			'delete_sidebar_area' => __( 'Are you sure you want to delete this sidebar?', 'stag' )
 		) );
 
 		if ( true === version_compare( $wp_version, '3.7.9', '>' ) ) {

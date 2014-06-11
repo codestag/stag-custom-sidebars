@@ -12,7 +12,7 @@ class StagCustomSidebars
 	create_form: ->
 		@widget_wrap.append(this.widget_add.html())
 		@widget_name = @widget_wrap.find('input[name="stag-add-widget"]')
-		@nonce = @widget_wrap.find('input[name="scs-delete-nonce"]').val()		
+		@nonce = @widget_wrap.find('input[name="scs-delete-nonce"]').val()
 		return
 
 	add_elements: ->
@@ -21,9 +21,9 @@ class StagCustomSidebars
 			where_to_add = $(this).find('.widgets-sortables')
 			id = where_to_add.attr('id').replace('sidebar-', '')
 			if where_to_add.find('.sidebar-description').length > 0
-				where_to_add.find(".sidebar-description").append("<p class='description'>#{objectL10n.shortcode}: <code>[stag_sidebar id='#{id}']</code></p>");
+				where_to_add.find(".sidebar-description").append("<p class='description'>#{objectL10n.shortcode}: <code>[stag_sidebar id='#{id}']</code></p>")
 			else
-				where_to_add.append("<div class='sidebar-description'><p class='description'>#{objectL10n.shortcode}: <code>[stag_sidebar id='#{id}']</code></p></div>");
+				where_to_add.append("<div class='sidebar-description'><p class='description'>#{objectL10n.shortcode}: <code>[stag_sidebar id='#{id}']</code></p></div>")
 			return
 		return
 
@@ -36,30 +36,33 @@ class StagCustomSidebars
 		title = widget.find '.sidebar-name h3'
 		spinner = title.find '.spinner'
 		widget_name = $.trim title.text()
-		obj = this;
+		obj = this
 
-		$.ajax
-			type: "POST"
-			url: window.ajaxurl
-			data:
-				action: 'stag_ajax_delete_custom_sidebar'
-				name: widget_name
-				_wpnonce: obj.nonce
+		if confirm( objectL10n.delete_sidebar_area )
+			$.ajax {
+				type: "POST"
+				url: window.ajaxurl
+				data: {
+					action: 'stag_ajax_delete_custom_sidebar'
+					name: widget_name
+					_wpnonce: obj.nonce
+				}
 
-			beforeSend: ->
-				spinner.addClass 'activate'
-				return
+				beforeSend: ->
+					spinner.addClass 'activate'
+					return
 
-			success: (response) ->
-				if response is "sidebar-deleted"
-					widget.slideUp 200, ->
-						$('.widget-control-remove', widget).trigger 'click'
-						widget.remove()
+				success: (response) ->
+					if response is "sidebar-deleted"
+						widget.slideUp 200, ->
+							$('.widget-control-remove', widget).trigger 'click'
+							widget.remove()
 
-						wpWidgets.saveOrder()
-						return
+							wpWidgets.saveOrder()
+							return
 
-				return
+					return
+			}
 
 		return
 

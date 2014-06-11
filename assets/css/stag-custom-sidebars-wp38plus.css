@@ -13,7 +13,7 @@
 @media only screen and (min-width: 1250px) {
 	.stag-widgets-holder-wrap {
 		max-width: 49%;
-	}	
+	}
 }
 
 .stag-widgets-holder-wrap h3 {
@@ -52,7 +52,7 @@
 	width: 15px;
 	height: 15px;
 	z-index: 50;
-	right: 40px;
+	right: 45px;
 	top: 13px;
 	font-size: 1.5em;
 	color: #cecece;
