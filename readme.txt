@@ -62,6 +62,9 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 
 == Changelog ==
 
+= 1.0.8 - June 11, 2014 =
+* Added confirmation dialogue when deleting the sidebar area
+
 = 1.0.7 - May 22, 2014 =
 * Added compatibilty with Widget Customizer
 
