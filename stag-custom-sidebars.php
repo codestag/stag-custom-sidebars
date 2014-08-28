@@ -278,10 +278,14 @@ final class Stag_Custom_Sidebars {
 
 		if( is_array( $sidebars ) ) {
 			foreach( $sidebars as $sidebar ) {
-				$args['id']    = sanitize_title_with_dashes( $sidebar );
 				$args['name']  = $sidebar;
+
+				$sidebar = sanitize_title_with_dashes( $sidebar );
+
+				$args['id']    = $sidebar;
 				$args['class'] = 'stag-custom';
-				register_sidebar($args);
+
+				register_sidebar( apply_filters( 'scs_widget_args_' . $sidebar, $args ) );
 			}
 		}
 	}
