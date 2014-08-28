@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Stag Custom Sidebars
- * Plugin URI: http://wordpress.org/plugins/stag-custom-sidebars
+ * Plugin URI: https://wordpress.org/plugins/stag-custom-sidebars
  * Description: Create custom dynamic sidebars and use anywhere with shortcodes.
  * Version: 1.0.8
  * Author: Ram Ratan Maurya
- * Author URI: http://mauryaratan.me
+ * Author URI: https://mauryaratan.me
  * Requires at least: 3.3
  * Tested up to: 4.0
  * License: GPLv2 or later
@@ -327,7 +327,7 @@ final class Stag_Custom_Sidebars {
 	 * Inject all custom sidebar areas created on site under export data of "Widget Importer and Exporter".
 	 *
 	 * @uses Widget_Importer_Exporter
-	 * @link http://wordpress.org/plugins/widget-importer-exporter
+	 * @link https://wordpress.org/plugins/widget-importer-exporter
 	 *
 	 * @since 1.0.6
 	 * @param  array $sidebars An array containing sidebars' widget data.
@@ -346,7 +346,7 @@ final class Stag_Custom_Sidebars {
 	 * Delete custom array key before 'Widget Importer & Exporter' import.
 	 *
 	 * @uses Widget_Importer_Exporter
-	 * @link http://wordpress.org/plugins/widget-importer-exporter
+	 * @link https://wordpress.org/plugins/widget-importer-exporter
 	 *
 	 * @since 1.0.6
 	 * @param  array $results An array containing sidebars' widget data.

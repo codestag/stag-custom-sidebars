@@ -24,7 +24,7 @@ We have added compatibility with [Widget Importer & Exporter](https://wordpress.
 
 If you'd like to check out the code and contribute, [join us on GitHub](https://github.com/mauryaratan/stag-custom-sidebars). Pull requests, issues, and plugin recommendations are more than welcome!
 
-*Checkout our finely tuned WordPress themes over at [Codestag](http://codestag.com).*
+*Checkout our finely tuned WordPress themes over at [Codestag](https://codestag.com).*
 
 == Installation ==
 
