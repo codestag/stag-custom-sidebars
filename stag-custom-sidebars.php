@@ -405,6 +405,8 @@ final class Stag_Custom_Sidebars {
 		// Get custom sidebar keys
 		$sidebars = array_keys( get_option('stag_custom_sidebars') );
 
+		if ( ! is_array( $sidebars ) ) return;
+
 		echo "<style type='text/css'>\n";
 		foreach ( $sidebars as $sidebar_id ) :
 			echo "#accordion-section-sidebar-widgets-{$sidebar_id} { display: list-item !important; height: auto !important; }\n";
