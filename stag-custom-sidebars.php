@@ -403,7 +403,7 @@ final class Stag_Custom_Sidebars {
 	 */
 	function customize_controls_print_scripts() {
 		// Get custom sidebar keys
-		$sidebars = array_keys( get_option('stag_custom_sidebars') );
+		( is_array( get_option('stag_custom_sidebars') ) ? $sidebars = array_keys( get_option('stag_custom_sidebars') ) : $sidebars = NULL);
 
 		if ( ! is_array( $sidebars ) ) return;
 
