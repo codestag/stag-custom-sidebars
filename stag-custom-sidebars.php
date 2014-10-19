@@ -402,8 +402,11 @@ final class Stag_Custom_Sidebars {
 	 * @return void
 	 */
 	function customize_controls_print_scripts() {
+
+		if ( false === ( $sidebars = get_option( 'stag_custom_sidebars' ) ) ) return;
+
 		// Get custom sidebar keys
-		$sidebars = array_keys( get_option( 'stag_custom_sidebars' ) );
+		$sidebars = array_keys( $sidebars );
 
 		if ( ! is_array( $sidebars ) ) return;
 
