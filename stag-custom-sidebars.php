@@ -431,6 +431,3 @@ function SCS() {
 
 // Global for backwards compatibility.
 $GLOBALS['stag_custom_sidebars'] = SCS();
-
-
-delete_option( 'stag_custom_sidebars' );
