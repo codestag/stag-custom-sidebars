@@ -62,6 +62,9 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 
 == Changelog ==
 
+= 1.0.10 - Oct 19, 2014 =
+* Fix issue with undefined option keys under customizer when no custom sidebars are present
+
 = 1.0.9 - August 28, 2014 =
 * Ensure compatibility with WordPress 4.0
 * Fix an issue where plugin caused an error on customizer screen when no custom sidebars are created
