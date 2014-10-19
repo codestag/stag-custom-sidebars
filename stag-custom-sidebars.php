@@ -92,7 +92,7 @@ final class Stag_Custom_Sidebars {
 		add_action( 'admin_footer', array( &$this, 'template_custom_widget_area' ), 200 );
 		add_action( 'load-widgets.php', array( &$this, 'load_scripts_styles' ) , 5 );
 
-		add_action( 'widgets_init', array( &$this, 'register_custom_sidebars'), 1000 );
+		add_action( 'widgets_init', array( &$this, 'register_custom_sidebars' ), 1000 );
 		add_action( 'wp_ajax_stag_ajax_delete_custom_sidebar', array( &$this, 'delete_sidebar_area' ) , 1000 );
 
 		add_shortcode( 'stag_sidebar', array( &$this, 'stag_sidebar_shortcode' ) );
@@ -109,8 +109,8 @@ final class Stag_Custom_Sidebars {
 	 *
 	 * @return void
 	 */
-	function load_plugin_textdomain () {
-		load_plugin_textdomain ( 'stag', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	function load_plugin_textdomain() {
+		load_plugin_textdomain( 'stag', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
@@ -134,15 +134,15 @@ final class Stag_Custom_Sidebars {
 
 		global $wp_version;
 
-		add_action( 'load-widgets.php', array( $this, 'add_sidebar_area'), 100 );
+		add_action( 'load-widgets.php', array( $this, 'add_sidebar_area' ), 100 );
 
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'stag-custom-sidebars', $this->plugin_url() . '/assets/js/stag-custom-sidebars.js', array('jquery'), $this->version, true );
+		wp_enqueue_script( 'stag-custom-sidebars', $this->plugin_url() . '/assets/js/stag-custom-sidebars.js', array( 'jquery' ), $this->version, true );
 
 		wp_localize_script( 'stag-custom-sidebars', 'objectL10n', array(
 			'shortcode'           => __( 'Shortcode', 'stag' ),
 			'delete_sidebar_area' => __( 'Are you sure you want to delete this sidebar?', 'stag' )
-		) );
+			) );
 
 		if ( true === version_compare( $wp_version, '3.7.9', '>' ) ) {
 			wp_enqueue_style( 'stag-custom-sidebars-wp38plus', $this->plugin_url() .  '/assets/css/stag-custom-sidebars-wp38plus.css', '', $this->version, 'screen' );
@@ -165,22 +165,22 @@ final class Stag_Custom_Sidebars {
 				<div class="sidebar-name">
 					<h3><?php echo $this->title ?></h3>
 				</div>
-				<?php endif; ?>
+			<?php endif; ?>
 
-				<form class="stag-add-widget" method="post">
-					<?php if ( true === version_compare( $wp_version, '3.7.9', '>' ) ) : ?>
-					<div class="sidebar-name">
-						<h3><?php echo $this->title ?></h3>
-					</div>
-					<?php endif; ?>
-					<input type="text" name="stag-add-widget" value="" placeholder="<?php _e( 'Enter name of the new widget area here', 'stag' ); ?>" required />
-					<?php submit_button( __( 'Add Widget Area', 'stag' ), 'secondary large', $name = 'stag-custom-sidebar-submit' ); ?>
-					<input type='hidden' name='scs-delete-nonce' value="<?php echo wp_create_nonce( 'scs-delete-nonce' ) ?>">
-				</form>
-			</div>
-		</script>
-		<?php
-	}
+			<form class="stag-add-widget" method="post">
+				<?php if ( true === version_compare( $wp_version, '3.7.9', '>' ) ) : ?>
+				<div class="sidebar-name">
+					<h3><?php echo $this->title ?></h3>
+				</div>
+			<?php endif; ?>
+			<input type="text" name="stag-add-widget" value="" placeholder="<?php _e( 'Enter name of the new widget area here', 'stag' ); ?>" required />
+			<?php submit_button( __( 'Add Widget Area', 'stag' ), 'secondary large', $name = 'stag-custom-sidebar-submit' ); ?>
+			<input type='hidden' name='scs-delete-nonce' value="<?php echo wp_create_nonce( 'scs-delete-nonce' ) ?>">
+		</form>
+	</div>
+</script>
+<?php
+}
 
 	/**
 	 * Add Sidebar area.
@@ -188,14 +188,14 @@ final class Stag_Custom_Sidebars {
 	 * @return void
 	 */
 	public function add_sidebar_area() {
-		if ( !empty( $_POST['stag-add-widget'] ) ) {
-			$this->sidebars = get_option($this->stored);
+		if ( ! empty( $_POST['stag-add-widget'] ) ) {
+			$this->sidebars = get_option( $this->stored );
 			$name           = $this->get_name( $_POST['stag-add-widget'] );
 
-			$this->sidebars[sanitize_title_with_dashes($name)] = $name;
+			$this->sidebars[ sanitize_title_with_dashes( $name ) ] = $name;
 
 			update_option( $this->stored, $this->sidebars );
-			wp_redirect( admin_url('widgets.php') );
+			wp_redirect( admin_url( 'widgets.php' ) );
 			die();
 		}
 	}
@@ -206,17 +206,17 @@ final class Stag_Custom_Sidebars {
 	 * @return void
 	 */
 	public function delete_sidebar_area() {
-		check_ajax_referer('scs-delete-nonce');
+		check_ajax_referer( 'scs-delete-nonce' );
 
 		if ( ! empty( $_POST['name'] ) ) {
-			$name           = sanitize_title_with_dashes(stripslashes($_POST['name']));
-			$this->sidebars = get_option($this->stored);
+			$name           = sanitize_title_with_dashes( stripslashes( $_POST['name'] ) );
+			$this->sidebars = get_option( $this->stored );
 
 			if ( array_key_exists( $name, $this->sidebars ) ) {
-				unset( $this->sidebars[$name] );
+				unset( $this->sidebars[ $name ] );
 				update_option( $this->stored, $this->sidebars );
 				unregister_sidebar( $name );
-				echo "sidebar-deleted";
+				echo 'sidebar-deleted';
 			}
 		}
 		die();
@@ -228,34 +228,34 @@ final class Stag_Custom_Sidebars {
 	 * @param string $name User entered name
 	 * @return string Processed name
 	 */
-	public function get_name($name) {
-        if ( empty( $GLOBALS['wp_registered_sidebars'] ) ) {
-        	return $name;
-        }
+	public function get_name( $name ) {
+		if ( empty( $GLOBALS['wp_registered_sidebars'] ) ) {
+			return $name;
+		}
 
-	    $taken = array();
+		$taken = array();
 
-        foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) {
-            $taken[] = $sidebar['name'];
-	    }
+		foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) {
+			$taken[] = $sidebar['name'];
+		}
 
-        if( empty($this->sidebars) ) $this->sidebars = array();
-	    $taken = array_merge($taken, $this->sidebars);
+		if ( empty($this->sidebars) ) $this->sidebars = array();
+		$taken = array_merge( $taken, $this->sidebars );
 
-	    if ( in_array( $name, $taken ) ) {
-             $counter  = substr($name, -1);
-             $new_name = "";
+		if ( in_array( $name, $taken ) ) {
+			$counter  = substr( $name, -1 );
+			$new_name = '';
 
-            if ( ! is_numeric($counter) ) {
-                $new_name = $name . " 1";
-            } else {
-                $new_name = substr($name, 0, -1) . ((int) $counter + 1);
-            }
+			if ( ! is_numeric( $counter ) ) {
+				$new_name = $name . ' 1';
+			} else {
+				$new_name = substr( $name, 0, -1 ) . ( (int) $counter + 1 );
+			}
 
-            $name = $this->get_name($new_name);
-	    }
+			$name = $this->get_name( $new_name );
+		}
 
-	    return $name;
+		return $name;
 	}
 
 	/**
@@ -266,18 +266,18 @@ final class Stag_Custom_Sidebars {
 	 */
 	public function register_custom_sidebars() {
 
-		$sidebars = get_option($this->stored);
+		$sidebars = get_option( $this->stored );
 
 		$args = apply_filters( 'stag_custom_sidebars_widget_args', array(
-				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</aside>',
-				'before_title'  => '<h3 class="widgettitle">',
-				'after_title'   => '</h3>'
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h3 class="widgettitle">',
+			'after_title'   => '</h3>',
 			)
 		);
 
-		if( is_array( $sidebars ) ) {
-			foreach( $sidebars as $sidebar ) {
+		if ( is_array( $sidebars ) ) {
+			foreach ( $sidebars as $sidebar ) {
 				$args['name']  = $sidebar;
 
 				$sidebar = sanitize_title_with_dashes( $sidebar );
@@ -297,21 +297,21 @@ final class Stag_Custom_Sidebars {
 	 * @return string $output returns the modified html string
 	 */
 	public function stag_sidebar_shortcode( $atts ) {
-		extract( shortcode_atts( array(
+		$atts = shortcode_atts( array(
 			'id' => '1',
-			'class' => ''
-		), $atts ) );
+			'class' => '',
+		), $atts );
 
 		$output = '';
 
-		if( is_active_sidebar( $id ) ) {
+		if ( is_active_sidebar( $id ) ) {
 			ob_start();
 
 			do_action( 'stag_custom_sidebars_before', $id );
 
 			echo "<section id='{$id}' class='stag-custom-widget-area {$class}'>";
 			dynamic_sidebar( $id );
-			echo "</section>";
+			echo '</section>';
 
 			do_action( 'stag_custom_sidebars_after' );
 
@@ -335,7 +335,7 @@ final class Stag_Custom_Sidebars {
 	 */
 	public function export_data( $sidebars ) {
 
-		if ( empty( $this->sidebars ) ) $this->sidebars = get_option($this->stored);
+		if ( empty( $this->sidebars ) ) $this->sidebars = get_option( $this->stored );
 
 		$sidebars['stag-custom-sidebars-areas'] = $this->sidebars;
 
@@ -375,16 +375,16 @@ final class Stag_Custom_Sidebars {
 		$data = (array) $data;
 
 		$key             = 'stag-custom-sidebars-areas';
-		$sidebars        = get_option('stag_custom_sidebars');
-		$custom_sidebars = (array) $data[$key];
+		$sidebars        = get_option( 'stag_custom_sidebars' );
+		$custom_sidebars = (array) $data[ $key ];
 
-		unset($data[$key]);
+		unset( $data[ $key ] );
 
 		// Loop through each imported custom sidebar area and prepare it
 		// to be added in new custom sidebar areas.
 		foreach ( $custom_sidebars as $sidebar_id => $title ) {
-			if ( ! isset( $wp_registered_sidebars[$sidebar_id] ) ) {
-				$sidebars[$sidebar_id] = $title;
+			if ( ! isset( $wp_registered_sidebars[ $sidebar_id ] ) ) {
+				$sidebars[ $sidebar_id ] = $title;
 			}
 		}
 
@@ -403,7 +403,7 @@ final class Stag_Custom_Sidebars {
 	 */
 	function customize_controls_print_scripts() {
 		// Get custom sidebar keys
-		$sidebars = array_keys( get_option('stag_custom_sidebars') );
+		$sidebars = array_keys( get_option( 'stag_custom_sidebars' ) );
 
 		if ( ! is_array( $sidebars ) ) return;
 
@@ -428,3 +428,6 @@ function SCS() {
 
 // Global for backwards compatibility.
 $GLOBALS['stag_custom_sidebars'] = SCS();
+
+
+delete_option( 'stag_custom_sidebars' );
