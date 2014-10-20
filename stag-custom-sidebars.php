@@ -304,13 +304,13 @@ final class Stag_Custom_Sidebars {
 
 		$output = '';
 
-		if ( is_active_sidebar( $id ) ) {
+		if ( is_active_sidebar( $atts['id'] ) ) {
 			ob_start();
 
-			do_action( 'stag_custom_sidebars_before', $id );
+			do_action( 'stag_custom_sidebars_before', $atts['id'] );
 
-			echo "<section id='{$id}' class='stag-custom-widget-area {$class}'>";
-			dynamic_sidebar( $id );
+			echo "<section id='{$atts['id']}' class='stag-custom-widget-area {$atts['class']}'>";
+			dynamic_sidebar( $atts['id'] );
 			echo '</section>';
 
 			do_action( 'stag_custom_sidebars_after' );
