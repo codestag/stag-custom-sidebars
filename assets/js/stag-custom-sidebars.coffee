@@ -16,7 +16,7 @@ class StagCustomSidebars
 		return
 
 	add_elements: ->
-		@widget_area.find('.sidebar-stag-custom').append('<span class="scs-area-delete">&#10006;</span>')
+		@widget_area.find('.sidebar-stag-custom').append('<span class="scs-area-delete"><span class="dashicons dashicons-no"></span></span>')
 		@widget_area.find('.sidebar-stag-custom').each ->
 			where_to_add = $(this).find('.widgets-sortables')
 			id = where_to_add.attr('id').replace('sidebar-', '')
@@ -33,9 +33,9 @@ class StagCustomSidebars
 
 	delete_sidebar: (e) ->
 		widget = $(e.currentTarget).parents '.widgets-holder-wrap:eq(0)'
-		title = widget.find '.sidebar-name h3'
-		spinner = title.find '.spinner'
-		widget_name = $.trim title.text()
+		title = widget.find '.sidebar-name h2'
+		spinner = widget.find '.spinner'
+		widget_name = widget.children().first().attr('id')
 		obj = this
 
 		if confirm( objectL10n.delete_sidebar_area )
