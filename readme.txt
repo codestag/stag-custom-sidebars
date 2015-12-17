@@ -3,8 +3,8 @@ Contributors: mauryaratan, codestag
 Donate link: http://codest.ag/scs-donate
 Tags: sidebars, custom-sidebars, mauryaratan, codestag, shortcodes, widgets
 Requires at least: 3.3
-Stable tag: 1.0.11
-Tested up to: 4.0
+Stable tag: 1.1
+Tested up to: 4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,10 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 2. As usual, new widget area appears to right of the screen along with a button to delete the widget area with a shortcode in description to use it anywhere.
 
 == Changelog ==
+
+= 1.1 - Dec 17, 2015 =
+* Fixed an issue where sidebar wouldn't delete
+* Tweaked the delete icon
 
 = 1.0.11 - Oct 20, 2014 =
 * Fix issue with undefined variables breaking the sidebars
