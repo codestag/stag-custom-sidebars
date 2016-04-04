@@ -3,11 +3,11 @@
  * Plugin Name: Stag Custom Sidebars
  * Plugin URI: https://wordpress.org/plugins/stag-custom-sidebars
  * Description: Create custom dynamic sidebars and use anywhere with shortcodes.
- * Version: 1.1
+ * Version: 1.2
  * Author: Ram Ratan Maurya
  * Author URI: https://mauryaratan.me
  * Requires at least: 3.3
- * Tested up to: 4.4
+ * Tested up to: 4.5
  * License: GPLv2 or later
  *
  * Text Domain: stag
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @package Stag_Custom_Sidebars
  * @author Ram Ratan Maurya
- * @version 1.1
+ * @version 1.2
  * @copyright 2015 Ram Ratan Maurya
  */
 final class Stag_Custom_Sidebars {
@@ -35,7 +35,7 @@ final class Stag_Custom_Sidebars {
 	/**
 	 * @var string
 	 */
-	public $version = '1.1';
+	public $version = '1.2';
 
 	/**
 	 * @var string
@@ -174,7 +174,7 @@ final class Stag_Custom_Sidebars {
 				</div>
 			<?php endif; ?>
 			<input type="text" name="stag-add-widget" value="" placeholder="<?php _e( 'Enter name of the new widget area here', 'stag' ); ?>" required />
-			<?php submit_button( __( 'Add Widget Area', 'stag' ), 'secondary large', $name = 'stag-custom-sidebar-submit' ); ?>
+			<?php submit_button( __( 'Add Widget Area', 'stag' ), 'secondary large', 'stag-custom-sidebar-submit' ); ?>
 			<input type='hidden' name='scs-delete-nonce' value="<?php echo wp_create_nonce( 'scs-delete-nonce' ) ?>">
 		</form>
 	</div>
@@ -412,8 +412,8 @@ final class Stag_Custom_Sidebars {
 
 		echo "<style type='text/css'>\n";
 		foreach ( $sidebars as $sidebar_id ) :
-			echo "#accordion-section-sidebar-widgets-{$sidebar_id} { display: list-item !important; height: auto !important; }\n";
-			echo "#accordion-section-sidebar-widgets-{$sidebar_id} .widget-top { opacity: 1 !important; }\n";
+			echo "#accordion-section-sidebar-widgets-" . esc_attr( $sidebar_id ) . " { display: list-item !important; height: auto !important; }\n";
+			echo "#accordion-section-sidebar-widgets-" . esc_attr( $sidebar_id ) . " .widget-top { opacity: 1 !important; }\n";
 		endforeach;
 		echo "</style>\n";
 	}
