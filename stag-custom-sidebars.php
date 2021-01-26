@@ -3,11 +3,11 @@
  * Plugin Name: Stag Custom Sidebars
  * Plugin URI: https://wordpress.org/plugins/stag-custom-sidebars
  * Description: Create custom dynamic sidebars and use anywhere with shortcodes.
- * Version: 1.2
+ * Version: 1.2.1
  * Author: Ram Ratan Maurya
  * Author URI: https://mauryaratan.me
- * Requires at least: 3.3
- * Tested up to: 4.5
+ * Requires at least: 5.0
+ * Tested up to: 5.6
  * License: GPLv2 or later
  *
  * Text Domain: stag
