@@ -62,6 +62,10 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 
 == Changelog ==
 
+= 1.2.1 - January 26, 2021 =
+* Ensure compatibility with WordPress 5.6
+* Other minor improvements
+
 = 1.2 - Apr 04, 2016 =
 * Ensure compability with WordPress 4.5
 * Fix sidebar delete button positioning
