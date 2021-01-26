@@ -304,7 +304,6 @@ final class Stag_Custom_Sidebars {
 
 		$output = '';
 
-		if ( is_active_sidebar( $atts['id'] ) ) {
 		if ( is_active_sidebar( $atts['id'] ) && ! is_admin() ) {
 			ob_start();
 
