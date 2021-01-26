@@ -309,7 +309,7 @@ final class Stag_Custom_Sidebars {
 
 			do_action( 'stag_custom_sidebars_before', $atts['id'] );
 
-			echo "<section id='{$atts['id']}' class='stag-custom-widget-area {$atts['class']}'>";
+			echo "<section id='" . esc_attr( $atts['id'] ) . "' class='stag-custom-widget-area " . esc_attr( $atts['class'] ) . "'>";
 			dynamic_sidebar( $atts['id'] );
 			echo '</section>';
 
