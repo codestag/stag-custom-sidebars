@@ -2,9 +2,9 @@
 Contributors: mauryaratan, codestag
 Donate link: http://codest.ag/scs-donate
 Tags: sidebars, custom-sidebars, mauryaratan, codestag, shortcodes, widgets
-Requires at least: 3.3
-Stable tag: 1.2
-Tested up to: 4.5
+Requires at least: 5.0
+Stable tag: 1.2.1
+Tested up to: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,10 @@ Bugs can be reported either in our support forum or preferably on the [Stag Cust
 2. As usual, new widget area appears to right of the screen along with a button to delete the widget area with a shortcode in description to use it anywhere.
 
 == Changelog ==
+
+= 1.2.1 - January 26, 2021 =
+* Ensure compatibility with WordPress 5.6
+* Other minor improvements
 
 = 1.2 - Apr 04, 2016 =
 * Ensure compability with WordPress 4.5
